@@ -1,0 +1,29 @@
+﻿@page
+@model WebApplication1.Pages.DashBoardModel
+@{
+}
+
+
+<!-- Dashboard komponenta -->
+<div id="dashboard" class="dashboard">
+	<div class="dashboard-content">
+		<h2>Dashboard</h2>
+		<ul>
+			<li><a href="#">Domů</a></li>
+			<li><a href="#">Turnaje</a></li>
+			<li><a href="#">Organizace</a></li>
+			<li><a href="#">Nastavení</a></li>
+			<li><a href="#">Kontakt</a></li>
+		</ul>
+	</div>
+	<!-- Tlačítko pro toggle s šipkou (← při zobrazení, → při skrytí) -->
+	<button id="toggleDashboard" class="toggle-btn">&#x25C0;</button>
+</div>
+
+
+<script>
+	document.getElementById('toggleDashboard').addEventListener('click', function() {
+		var dashboard = document.getElementById('dashboard');
+		dashboard.classList.toggle('collapsed');
+	});
+</script>

@@ -1,0 +1,79 @@
+﻿@page
+@model WebApplication1.Pages.LoginModel
+@{
+}
+
+<!-- Vlastní kontejner nahrazující <body> -->
+<div class="page-wrapper12">
+    <section class="login-container12">
+        <h2>Přihlášení</h2>
+        <form id="loginForm" action="#" method="post">
+            <label for="username">Uživatelské jméno nebo e-mail</label>
+            <input type="text" id="username" name="username" placeholder="Zadejte uživatelské jméno nebo e-mail" required>
+
+            <label for="password">Heslo</label>
+            <input type="password" id="password" name="password" placeholder="Zadejte heslo" required>
+
+            <div class="options12">
+                <div>
+                    <input type="checkbox" id="remember" name="remember">
+                    <label for="remember" style="display:inline;">Zapamatovat si mě</label>
+                </div>
+                <a href="#">Zapomenuté heslo?</a>
+            </div>
+
+            <button type="submit">Přihlásit se</button>
+        </form>
+        <div class="register12">
+            <p>Nemáte účet? <a href="#">Registrovat se</a></p>
+        </div>
+        <div id="loginStatus"></div>
+    </section>
+</div>
+
+<script type="module">
+    // Import potřebných funkcí z Firebase SDK verze 11
+    import { initializeApp } from 'https://www.gstatic.com/firebasejs/11.3.0/firebase-app.js';
+    import { getAuth, signInWithEmailAndPassword } from 'https://www.gstatic.com/firebasejs/11.3.0/firebase-auth.js';
+
+    // Nahraďte tyto hodnoty svými údaji z Firebase Console
+    const firebaseConfig = {
+      apiKey: "AIzaSyCxtoLSt8Pok3qXjuM1Kf9c2aQ_j8eW34k",
+      authDomain: "cs2-lan-party.firebaseapp.com",
+      projectId: "cs2-lan-party",
+      storageBucket: "cs2-lan-party.appspot.com",
+      messagingSenderId: "891209117834",
+      appId: "1:891209117834:web:57f4289079b87e479fbd73"
+    };
+
+    // Inicializace Firebase a získání instance Auth
+    const app = initializeApp(firebaseConfig);
+    const auth = getAuth(app);
+
+    const loginForm = document.getElementById('loginForm');
+    const loginStatus = document.getElementById('loginStatus');
+
+    loginForm.addEventListener('submit', (e) => {
+      e.preventDefault(); // Zabráníme výchozímu odeslání formuláře
+
+      const email = document.getElementById('username').value;
+      const password = document.getElementById('password').value;
+
+      // Použijeme Firebase Authentication pro přihlášení uživatele
+      signInWithEmailAndPassword(auth, email, password)
+        .then((userCredential) => {
+          // Přihlášení proběhlo úspěšně
+          loginStatus.textContent = "Přihlášení proběhlo úspěšně!";
+          // Případně přesměrujte uživatele na dashboard nebo jinou stránku:
+          // window.location.href = "/dashboard";
+          // Po krátké prodlevě přesměrujeme uživatele na hlavní stránku, kde se zobrazí Dashboard
+          setTimeout(() => {
+            window.location.href = "/";
+          }, 1500); // prodleva 1.5 sekundy
+        })
+        .catch((error) => {
+          // Zobrazíme chybovou hlášku
+          loginStatus.textContent = "Chyba: " + error.message;
+        });
+    });
+</script>

@@ -1,4 +1,11 @@
-﻿<!DOCTYPE html>
+﻿@using WebApplication1.Helpers
+@{
+    // Načteme nastavení alertu pomocí naší metody GetAlertSettings.
+    // Ujistěte se, že metoda vrací (bool, string)
+    var alertSettings = AlertHelpers.GetAlertSettings();
+}
+
+<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="utf-8" />
@@ -7,44 +14,208 @@
     <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
     <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
     <link rel="stylesheet" href="~/WebApplication1.styles.css" asp-append-version="true" />
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <script src="https://static.elfsight.com/platform/platform.js" async></script>
+    <!-- Styl AOS -->
+    <link rel="stylesheet" href="https://unpkg.com/aos@2.3.1/dist/aos.css">
+    <!-- Skript AOS -->
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
 </head>
 <body>
+    @* Pokud je alert zapnutý, zobrazíme top bar *@
+    @if (alertSettings.Item1)
+    {
+        <div id="top-bar-alert" style="background-color: red; color: white; text-align: center; padding: 10px; position: sticky; top: 0; width: 100%; z-index: 9999; font-weight: bold;">
+            @alertSettings.Item2
+        </div>
+    }
+    <div class="elfsight-app-e5d3ee02-766f-412d-b036-1bfb0c4e4c7b" data-elfsight-app-lazy></div>
     <header>
-        <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-white border-bottom box-shadow mb-3">
-            <div class="container">
-                <a class="navbar-brand" asp-area="" asp-page="/Index">WebApplication1</a>
-                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target=".navbar-collapse" aria-controls="navbarSupportedContent"
-                        aria-expanded="false" aria-label="Toggle navigation">
-                    <span class="navbar-toggler-icon"></span>
+        <!-- Navigation Bar -->
+        <nav class="navbar12">
+            <div class="nav-logo12">
+                <a href="/"><img src="/lib/images/logo_cs2_compet.png" alt="CS Logo">&nbsp;*si][ki* CS2 LAN party</a>
+                <br />
+                <!-- Toggle tlačítko pro Dashboard (umístěné uvnitř loga, ale nyní budeme řídit jeho viditelnost pomocí Firebase) -->
+                <button id="toggleDashboard" class="toggle-btn">
+                    <span class="arrow">&#x25C0;</span>
+                    <span class="toggle-text">Zavřít</span>
                 </button>
-                <div class="navbar-collapse collapse d-sm-inline-flex justify-content-between">
-                    <ul class="navbar-nav flex-grow-1">
-                        <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-page="/Index">Home</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-page="/Privacy">Privacy</a>
-                        </li>
-                    </ul>
+            </div>
+            <div class="nav-links12">
+                <ul>
+                    <li><a href="/">Domů</a></li>
+                    <li><a href="/About">O nás</a></li>
+                    <li><a href="/FAQ">Služby</a></li>
+                    <li><a href="/Kontakt">Kontakt</a></li>
+                </ul>
+            </div>
+            <div class="nav-login12">
+                <a href="/Login">Přihlášení</a>
+                &nbsp;
+                <a href="/Register">Registrace</a>
+            </div>
+            <div class="nav-hamburger12">
+                <div class="hamburger-icon12">
+                    <span></span>
+                    <span></span>
+                    <span></span>
                 </div>
             </div>
         </nav>
+
+        <!-- Fullscreen Overlay Menu for Mobile -->
+        <div class="nav-overlay12">
+            <div class="overlay-content12">
+                <ul>
+                    <li><a href="/">Domů</a></li>
+                    <li><a href="/About">O nás</a></li>
+                    <li><a href="/FAQ">Služby</a></li>
+                    <li><a href="/Kontakt">Kontakt</a></li>
+                    <li><a href="/Login">Přihlášení</a></li>
+                </ul>
+            </div>
+        </div>
     </header>
+
+    <!-- Dashboard komponenta -->
+    <div id="dashboard" class="dashboard">
+        <div class="dashboard-content">
+            <h2 class="dashboard-title">Dashboard</h2>
+            <ul>
+                <li><a href="#">Domů</a></li>
+                <li><a href="#">Turnaje</a></li>
+                <li><a href="#">Organizace</a></li>
+                <li><a href="#">Nastavení</a></li>
+                <li><a href="#">Kontakt</a></li>
+            </ul>
+        </div>
+    </div>
+
+    <script>
+        // Původní kód pro toggle tlačítko – zůstává zachován.
+        const toggleBtn = document.getElementById('toggleDashboard');
+        const dashboard = document.getElementById('dashboard');
+
+        // Výchozí stav: dashboard je "collapsed" (ale jeho viditelnost bude určena Firebase)
+        dashboard.classList.add('collapsed');
+        toggleBtn.classList.add('collapsed');
+        toggleBtn.querySelector('.toggle-text').textContent = 'Zobrazit';
+
+        // Při kliknutí na tlačítko se dashboard přepíná mezi otevřeným a zavřeným stavem
+        toggleBtn.addEventListener('click', function () {
+            dashboard.classList.toggle('collapsed');
+            toggleBtn.classList.toggle('collapsed');
+            if (dashboard.classList.contains('collapsed')) {
+                toggleBtn.querySelector('.toggle-text').textContent = 'Zobrazit';
+            } else {
+                toggleBtn.querySelector('.toggle-text').textContent = 'Zavřít';
+            }
+        });
+    </script>
+
+    <!-- Firebase Authentication: Řízení zobrazení Dashboardu podle přihlášení -->
+    <script type="module">
+        import { initializeApp } from 'https://www.gstatic.com/firebasejs/11.3.0/firebase-app.js';
+        import { getAuth, onAuthStateChanged } from 'https://www.gstatic.com/firebasejs/11.3.0/firebase-auth.js';
+
+        const firebaseConfig = {
+            apiKey: "AIzaSyCxtoLSt8Pok3qXjuM1Kf9c2aQ_j8eW34k",
+            authDomain: "cs2-lan-party.firebaseapp.com",
+            projectId: "cs2-lan-party",
+            storageBucket: "cs2-lan-party.appspot.com",
+            messagingSenderId: "891209117834",
+            appId: "1:891209117834:web:57f4289079b87e479fbd73"
+        };
+
+        const appFirebase = initializeApp(firebaseConfig);
+        const auth = getAuth(appFirebase);
+
+        onAuthStateChanged(auth, (user) => {
+            if (user) {
+                // Uživatel je přihlášen – zobrazíme Dashboard a toggle tlačítko
+                dashboard.style.display = "block";
+                toggleBtn.style.display = "block";
+            } else {
+                // Uživatel není přihlášen – skryjeme Dashboard i toggle tlačítko
+                dashboard.style.display = "none";
+                toggleBtn.style.display = "none";
+            }
+        });
+    </script>
+
     <div class="container">
         <main role="main" class="pb-3">
             @RenderBody()
         </main>
     </div>
 
-    <footer class="border-top footer text-muted">
-        <div class="container">
-            &copy; 2025 - WebApplication1 - <a asp-area="" asp-page="/Privacy">Privacy</a>
+    <!-- Profesionální footer pro LAN party (CS2 Dark Theme) -->
+    <footer class="lan-footer12">
+        <div class="footer-container12">
+            <div class="footer-top12">
+                <div class="footer-logo12">
+                    LAN Party 2025
+                </div>
+                <nav class="footer-nav12">
+                    <a href="#">Domů</a>
+                    <a href="#">Program</a>
+                    <a href="#">Sponzoři</a>
+                    <a href="#">Kontakt</a>
+                    <a href="#">Pravidla</a>
+                </nav>
+                <div class="footer-social12">
+                    <!-- Twitter ikona -->
+                    <a href="#" title="Twitter" class="social-link12">
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+                            <path d="M22.46 6c-.77.35-1.6.59-2.46.7a4.26 4.26 0 001.88-2.35 8.55 8.55 0 01-2.7 1.03 4.24 4.24 0 00-7.23 3.87A12.04 12.04 0 013 4.89a4.24 4.24 0 001.31 5.66 4.21 4.21 0 01-1.92-.53v.05a4.24 4.24 0 003.4 4.15 4.24 4.24 0 01-1.91.07 4.24 4.24 0 003.95 2.94A8.5 8.5 0 012 19.54a12.01 12.01 0 006.5 1.91c7.8 0 12.07-6.46 12.07-12.07 0-.18-.01-.35-.02-.53A8.61 8.61 0 0024 5.55a8.44 8.44 0 01-2.54.7z" />
+                        </svg>
+                    </a>
+                    <!-- Facebook ikona -->
+                    <a href="#" title="Facebook" class="social-link12">
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+                            <path d="M22 12c0-5.52-4.48-10-10-10S2 6.48 2 12c0 4.99 3.66 9.13 8.44 9.88v-6.99H7.9v-2.89h2.54V9.41c0-2.5 1.49-3.89 3.77-3.89 1.09 0 2.24.2 2.24.2v2.46h-1.26c-1.24 0-1.63.77-1.63 1.56v1.88h2.78l-.44 2.89h-2.34v6.99C18.34 21.13 22 16.99 22 12z" />
+                        </svg>
+                    </a>
+                    <!-- Twitch ikona -->
+                    <a href="#" title="Twitch" class="social-link12">
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512">
+                            <path d="M391.7 0H120.3C107.6 0 97.3 10.3 97.3 23L97 347.1c-.1 13.3 10.1 23.9 23.4 23.9h41.5V464c0 13.3 10.8 24 24.1 24h42.7c13.3 0 24.1-10.7 24.1-24v-93.7h42.8c13.3 0 24.1-10.7 24.1-24V23c0-13-10.6-23-23.3-23zM213.4 348.6h-28.7V322h28.7v26.6zm66.2 0h-28.7V322h28.7v26.6z" />
+                        </svg>
+                    </a>
+                </div>
+            </div>
+            <div class="footer-bottom12">
+                <div class="footer-info12">
+                    &copy; 2025 LAN Party. Všechna práva vyhrazena. Organizováno CS2 komunitou.
+                </div>
+            </div>
         </div>
     </footer>
 
     <script src="~/lib/jquery/dist/jquery.min.js"></script>
     <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
     <script src="~/js/site.js" asp-append-version="true"></script>
+
+    <script>
+        // Hamburger menu – přepínání stavu při kliknutí
+        const hamburgerContainer12 = document.querySelector('.nav-hamburger12');
+        const hamburgerIcon12 = document.querySelector('.hamburger-icon12');
+        const overlayMenu12 = document.querySelector('.nav-overlay12');
+
+        hamburgerContainer12.addEventListener('click', () => {
+            overlayMenu12.classList.toggle('nav-overlay-active12');
+            hamburgerIcon12.classList.toggle('hamburger-active12');
+        });
+    </script>
+
+    <!-- Inicializace AOS -->
+    <script>
+        AOS.init();
+    </script>
 
     @await RenderSectionAsync("Scripts", required: false)
 </body>

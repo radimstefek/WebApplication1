@@ -1,4 +1,4 @@
-html {
+﻿html {
   font-size: 14px;
 }
 
@@ -18,5 +18,1042 @@ html {
 }
 
 body {
-  margin-bottom: 60px;
+    overflow-x: hidden;
+    font-family: "Poppins", serif;
+    background-color: #121212;
+}
+
+
+
+
+
+
+
+
+
+
+
+.combined-section {
+    position: relative;
+    width: 100vw;
+    height: 950px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: #ffffff;
+    padding: 50px 0;
+    overflow: hidden;
+    left: 50%;
+    right: 50%;
+    margin-left: -50vw;
+    margin-right: -50vw;
+    text-align: center;
+    /* Nové řádky, aby sekce vytvořila vlastní "vrstvu" (stacking context) */
+    z-index: 0; /* Vytvoří stacking context; pseudo-element teď může být nad videem */
+}
+
+/* 1) Pseudo-element vytvářející černý fade v dolní části */
+.combined-section::after {
+    content: "";
+    position: absolute;
+    z-index: 1; /* Nad videem (které je -1), ale pod textem, viz níže */
+    pointer-events: none;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 20%; /* Výška vytracení odspodu (lze upravit) */
+    /* Od plné černé (dole) do průhledné (nahoře) */
+    background: linear-gradient(to top, rgba(0,0,0,1) 0%, rgba(0,0,0,0) 100%);
+}
+
+h2 {
+    font-size: 3rem;
+}
+
+.title-landing {
+    font-size: 5rem;
+}
+
+p {
+    font-size: 1.2rem;
+    max-width: 600px;
+    margin: 0 auto;
+}
+
+/* Stylizace videa jako pozadí */
+#background-video {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    z-index: -1;
+    filter: brightness(0.3); /* Čím nižší hodnota, tím tmavší výsledek */
+}
+
+
+/* 2) Text zvýšíme nad overlay, aby zůstal čitelný i v té spodní části */
+.grid-layout {
+    position: relative;
+    z-index: 2; /* Nad pseudo-elementem .combined-section::after */
+}
+
+
+
+.cta-buttons {
+    margin-top: 20px;
+    text-align: center;
+}
+
+    .cta-buttons .btn {
+        display: inline-block;
+        padding: 10px 20px;
+        margin: 10px;
+        font-size: 18px;
+        text-decoration: none;
+        border-radius: 15px;
+        transition: background 0.3s ease;
+    }
+
+.btn-primary {
+    background-color: #e58716;
+    color: #ffffff;
+}
+
+    .btn-primary:hover {
+        background-color: #cc3700;
+    }
+
+.btn-secondary {
+    background-color: #444;
+    color: #ffffff;
+}
+
+    .btn-secondary:hover {
+        background-color: #222;
+    }
+
+@media (max-width: 768px) {
+    .combined-section {
+        height: 880px;
+        padding: 30px 15px;
+        margin-top: 25px;
+    }
+
+    h2 {
+        font-size: 2rem;
+    }
+
+    p {
+        font-size: 1rem;
+    }
+
+    .cta-buttons .btn {
+        padding: 8px 15px;
+        font-size: 16px;
+        margin: 5px;
+    }
+}
+
+
+
+.services {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr); /* 3 sloupce na desktop */
+    gap: 20px;
+    text-align: center;
+    padding: 40px;
+    color: #fff;
+}
+
+.service {
+    background: #333;
+    padding: 20px;
+    border-radius: 10px;
+    transition: transform 0.3s ease;
+}
+
+    .service:hover {
+        transform: scale(1.05);
+    }
+
+    .service i {
+        font-size: 40px;
+        color: #f39c12;
+        margin-bottom: 10px;
+    }
+
+    .service h3 {
+        font-size: 22px;
+        margin-bottom: 10px;
+    }
+
+    .service p {
+        font-size: 16px;
+    }
+
+/* Responzivita pro mobilní zařízení */
+@media (max-width: 768px) {
+    .services {
+        grid-template-columns: 1fr; /* 1 sloupec pro mobil */
+    }
+}
+
+
+
+
+
+
+
+
+
+/* Úvodní sekce */
+.intro-section12 {
+    text-align: center;
+    padding-bottom: 20px;
+    border-bottom: 1px solid #333;
+    margin-bottom: 40px;
+    margin-top: 40px;
+}
+
+    .intro-section12 h1 {
+        font-size: 2.5rem;
+        margin-bottom: 10px;
+        color: #e58716;
+    }
+
+    .intro-section12 p {
+        font-size: 1.1rem;
+        color: white;
+    }
+
+/* Sekce s informacemi o akci */
+.event-info-section12 {
+    margin-bottom: 40px;
+}
+
+    .event-info-section12 h2 {
+        font-size: 1.8rem;
+        margin-bottom: 20px;
+        border-left: 4px solid #00bcd4;
+        padding-left: 10px;
+        color: #e58716;
+    }
+
+.event-info12 {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+}
+
+.event-info-item12 {
+    flex: 1;
+    min-width: 250px;
+    background-color: #1e1e1e;
+    color: white;
+    padding: 15px;
+    border-radius: 4px;
+    border: 1px solid #333;
+}
+
+    .event-info-item12 h3 {
+        margin-bottom: 10px;
+        font-size: 1.2rem;
+        color: #e58716;
+    }
+
+/* Sekce s mapou */
+.map-section12 {
+    margin-bottom: 40px;
+}
+
+    .map-section12 h2 {
+        font-size: 1.8rem;
+        margin-bottom: 20px;
+        border-left: 4px solid #00bcd4;
+        padding-left: 10px;
+        color: #e58716;
+    }
+
+.map-container12 {
+    width: 100%;
+    height: 400px;
+}
+
+    .map-container12 iframe {
+        width: 100%;
+        height: 100%;
+        border: 0;
+        border-radius: 4px;
+    }
+
+/* Sekce s detailními informacemi */
+.details-section12 {
+    margin-bottom: 40px;
+}
+
+    .details-section12 h2 {
+        font-size: 1.8rem;
+        margin-bottom: 20px;
+        border-left: 4px solid #00bcd4;
+        padding-left: 10px;
+        color: #e58716;
+    }
+
+.event-details12 {
+    background-color: #1e1e1e;
+    padding: 20px;
+    border-radius: 4px;
+    border: 1px solid #333;
+    color: white;
+}
+
+    .event-details12 p {
+        margin-bottom: 10px;
+    }
+
+/* Sekce se seznamem účastníků */
+.participant-section12 {
+    margin-bottom: 40px;
+}
+
+    .participant-section12 h2 {
+        font-size: 1.8rem;
+        margin-bottom: 20px;
+        border-left: 4px solid #00bcd4;
+        padding-left: 10px;
+        color: #e58716;
+    }
+
+.participant-list12 {
+    background-color: #1e1e1e;
+    padding: 20px;
+    border-radius: 4px;
+    border: 1px solid #333;
+    color: white;
+}
+
+    .participant-list12 ul {
+        list-style: none;
+    }
+
+    .participant-list12 li {
+        padding: 5px 0;
+        border-bottom: 1px solid #333;
+    }
+
+        .participant-list12 li:last-child {
+            border-bottom: none;
+        }
+
+@media (max-width: 768px) {
+    .event-info12 {
+        flex-direction: column;
+    }
+}
+
+
+
+/* Vlastní kontejner nahrazující <body> */
+.page-wrapper12 {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 100vh;
+    background-color: #121212;
+    color: #ffffff;
+    font-family: Arial, sans-serif;
+    padding: 20px;
+}
+
+/* Kontejner přihlašovacího formuláře */
+.login-container12 {
+    background-color: #1e1e1e;
+    padding: 30px;
+    border-radius: 8px;
+    width: 100%;
+    max-width: 400px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
+}
+
+    /* Nadpis formuláře s hlavní barvou */
+    .login-container12 h2 {
+        color: #e58716;
+        margin-bottom: 20px;
+        text-align: center;
+    }
+
+    /* Styl pro popisky a vstupní pole */
+    .login-container12 label {
+        display: block;
+        margin-bottom: 5px;
+        font-weight: bold;
+    }
+
+    .login-container12 input[type="text"],
+    .login-container12 input[type="email"],
+    .login-container12 input[type="password"] {
+        width: 100%;
+        padding: 10px;
+        margin-bottom: 15px;
+        border: none;
+        border-radius: 4px;
+        background-color: #2c2c2c;
+        color: #ffffff;
+    }
+
+    .login-container12 input[type="checkbox"] {
+        margin-right: 5px;
+    }
+
+    /* Kontejner pro volby (zapamatovat si mě a zapomenuté heslo) */
+    .login-container12 .options12 {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin-bottom: 15px;
+        font-size: 0.9em;
+    }
+
+        .login-container12 .options12 a {
+            color: #e58716;
+            text-decoration: none;
+        }
+
+            .login-container12 .options12 a:hover {
+                text-decoration: underline;
+            }
+
+    /* Styl tlačítka pro přihlášení */
+    .login-container12 button {
+        width: 100%;
+        padding: 10px;
+        background-color: #e58716;
+        color: #121212;
+        border: none;
+        border-radius: 4px;
+        font-size: 1em;
+        cursor: pointer;
+        font-weight: bold;
+    }
+
+        .login-container12 button:hover {
+            background-color: #cf7a13;
+        }
+
+    /* Odkaz pro registraci */
+    .login-container12 .register12 {
+        text-align: center;
+        margin-top: 15px;
+        font-size: 0.9em;
+    }
+
+        .login-container12 .register12 a {
+            color: #e58716;
+            text-decoration: none;
+        }
+
+            .login-container12 .register12 a:hover {
+                text-decoration: underline;
+            }
+
+
+
+/* Vlastní kontejner nahrazující <body> */
+.page-wrapper12 {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 100vh;
+    background-color: #121212;
+    color: #ffffff;
+    font-family: Arial, sans-serif;
+    padding: 20px;
+}
+
+/* Kontejner registračního formuláře */
+.register-container12 {
+    background-color: #1e1e1e;
+    padding: 30px;
+    border-radius: 8px;
+    width: 100%;
+    max-width: 400px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
+}
+
+    /* Nadpis formuláře s hlavní barvou */
+    .register-container12 h2 {
+        color: #e58716;
+        margin-bottom: 20px;
+        text-align: center;
+    }
+
+    /* Styl pro popisky a vstupní pole */
+    .register-container12 label {
+        display: block;
+        margin-bottom: 5px;
+        font-weight: bold;
+    }
+
+    .register-container12 input[type="text"],
+    .register-container12 input[type="email"],
+    .register-container12 input[type="password"] {
+        width: 100%;
+        padding: 10px;
+        margin-bottom: 15px;
+        border: none;
+        border-radius: 4px;
+        background-color: #2c2c2c;
+        color: #ffffff;
+    }
+
+    .register-container12 input[type="checkbox"] {
+        margin-right: 5px;
+    }
+
+/* Kontejner pro volby (checkbox pro podmínky) */
+.options12 {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 15px;
+    font-size: 0.9em;
+}
+
+    .options12 a {
+        color: #e58716;
+        text-decoration: none;
+    }
+
+        .options12 a:hover {
+            text-decoration: underline;
+        }
+
+/* Styl tlačítka pro registraci */
+.register-container12 button {
+    width: 100%;
+    padding: 10px;
+    background-color: #e58716;
+    color: #121212;
+    border: none;
+    border-radius: 4px;
+    font-size: 1em;
+    cursor: pointer;
+    font-weight: bold;
+}
+
+    .register-container12 button:hover {
+        background-color: #cf7a13;
+    }
+
+/* Odkaz pro přihlášení */
+.register12 {
+    text-align: center;
+    margin-top: 15px;
+    font-size: 0.9em;
+}
+
+    .register12 a {
+        color: #e58716;
+        text-decoration: none;
+    }
+
+        .register12 a:hover {
+            text-decoration: underline;
+        }
+
+
+
+
+/* Kontejner nahrazující <body> */
+.page-wrapper12 {
+    background-color: #121212;
+    color: #ffffff;
+    font-family: Arial, sans-serif;
+    padding: 40px;
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+/* Kontejner celé kontaktní stránky */
+.contact-container12 {
+    background-color: #1e1e1e;
+    border-radius: 8px;
+    padding: 20px;
+    max-width: 800px;
+    width: 100%;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+    margin-top: 40px;
+}
+
+    /* Nadpisy s hlavní barvou */
+    .contact-container12 h1 {
+        color: #e58716;
+        font-size: 2.5rem;
+        margin-bottom: 20px;
+        text-align: center;
+    }
+
+/* Kontaktní informace */
+.contact-info12 {
+    margin-bottom: 30px;
+    line-height: 1.6;
+}
+
+    .contact-info12 p {
+        margin-bottom: 10px;
+    }
+
+        .contact-info12 p strong {
+            color: #e58716;
+        }
+
+/* Styl formuláře */
+.contact-form12 form {
+    display: flex;
+    flex-direction: column;
+}
+
+.contact-form12 label {
+    margin-bottom: 5px;
+    font-weight: bold;
+}
+
+.contact-form12 input[type="text"],
+.contact-form12 input[type="email"],
+.contact-form12 textarea {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 15px;
+    border: none;
+    border-radius: 4px;
+    background-color: #2c2c2c;
+    color: #ffffff;
+    font-size: 1rem;
+}
+
+.contact-form12 textarea {
+    resize: vertical;
+    min-height: 120px;
+}
+
+.contact-form12 button {
+    padding: 12px;
+    background-color: #e58716;
+    color: #121212;
+    border: none;
+    border-radius: 4px;
+    font-size: 1.1rem;
+    cursor: pointer;
+    font-weight: bold;
+    transition: background-color 0.3s;
+}
+
+    .contact-form12 button:hover {
+        background-color: #cf7a13;
+    }
+
+
+
+
+
+/* Hlavní kontejner nahrazující <body> */
+.page-wrapper12 {
+    background-color: #121212;
+    color: #ffffff;
+    font-family: Arial, sans-serif;
+    padding: 40px 20px;
+    min-height: 100vh;
+}
+
+.content-container12 {
+    max-width: 1200px;
+    margin-top: 40px;
+}
+/* Sekce s úvodním popisem */
+.intro-section12 {
+    margin-bottom: 40px;
+    text-align: center;
+}
+
+    .intro-section12 h1 {
+        font-size: 2.8rem;
+        color: #e58716;
+        margin-bottom: 20px;
+    }
+
+    .intro-section12 p {
+        font-size: 1.1rem;
+        line-height: 1.6;
+    }
+/* Sekce s týmem */
+.team-section12 {
+    margin-bottom: 40px;
+}
+
+    .team-section12 h2 {
+        font-size: 2rem;
+        color: #e58716;
+        margin-bottom: 20px;
+        text-align: center;
+        border-bottom: 2px solid #e58716;
+        display: inline-block;
+        padding-bottom: 5px;
+    }
+
+.team-cards12 {
+    display: flex;
+    justify-content: space-between;
+    gap: 20px;
+    flex-wrap: wrap;
+}
+
+.team-card12 {
+    background-color: #1e1e1e;
+    border-radius: 8px;
+    padding: 20px;
+    flex: 1;
+    min-width: 280px;
+    text-align: center;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+}
+
+    .team-card12 img {
+        width: 120px;
+        height: 120px;
+        border-radius: 50%;
+        object-fit: cover;
+        margin-bottom: 15px;
+        border: 3px solid #e58716;
+    }
+
+    .team-card12 h3 {
+        font-size: 1.5rem;
+        color: #e58716;
+        margin-bottom: 10px;
+    }
+
+    .team-card12 p {
+        font-size: 1rem;
+        line-height: 1.5;
+    }
+
+
+
+
+/* Celkový kontejner stránky */
+.page-wrapper12 {
+    background-color: #121212;
+    color: #ffffff;
+    font-family: Arial, sans-serif;
+    padding: 40px 20px;
+    min-height: 100vh;
+}
+
+.content-container12 {
+    max-width: 1000px;
+}
+
+/* Nadpisy */
+h1 {
+    color: #e58716;
+    font-size: 2.8rem;
+    margin-bottom: 20px;
+    text-align: center;
+}
+
+h2 {
+    color: #e58716;
+    font-size: 3rem;
+    font-weight: 800;
+    margin-bottom: 20px;
+    border-bottom: 2px solid #e58716;
+    display: inline-block;
+    padding-bottom: 5px;
+}
+
+h3 {
+    color: #e58716;
+    margin-bottom: 10px;
+}
+
+p {
+    font-size: 1rem;
+    line-height: 1.6;
+    margin-bottom: 10px;
+}
+
+/* Timeline sekce */
+.timeline-section12 {
+    margin-bottom: 60px;
+}
+
+.timeline12 {
+    position: relative;
+    margin-left: 20px;
+    padding-left: 20px;
+    border-left: 2px solid #e58716;
+}
+
+.timeline-item12 {
+    margin-bottom: 30px;
+    position: relative;
+}
+
+    .timeline-item12::before {
+        content: '';
+        position: absolute;
+        left: -11px;
+        top: 0;
+        width: 20px;
+        height: 20px;
+        background-color: #e58716;
+        border-radius: 50%;
+        border: 2px solid #121212;
+    }
+
+.timeline-time12 {
+    font-weight: bold;
+    margin-bottom: 5px;
+}
+
+.timeline-content12 {
+    background-color: #1e1e1e;
+    padding: 15px;
+    border-radius: 4px;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.3);
+}
+
+/* FAQ sekce */
+.faq-section12 {
+    margin-bottom: 40px;
+}
+
+.faq-item12 {
+    margin-bottom: 20px;
+}
+
+    .faq-item12 h3 {
+        cursor: pointer;
+        padding: 10px;
+        background-color: #1e1e1e;
+        border-radius: 4px;
+        margin-bottom: 5px;
+        transition: background-color 0.3s;
+    }
+
+        .faq-item12 h3:hover {
+            background-color: #2c2c2c;
+        }
+
+    .faq-item12 p {
+        padding: 10px;
+        background-color: #2c2c2c;
+        border-radius: 4px;
+        display: none; /* skryté, dokud uživatel neklikne */
+    }
+
+
+
+
+
+
+/* Styl pro element s typewriter efektem */
+#typewriter {
+    font-family: monospace;
+    font-size: 2rem;
+    color: #e58716;
+    white-space: nowrap;
+    overflow: hidden;
+    border-right: 2px solid #e58716;
+    /* Nastavení minimální výšky, aby kontejner nezmizel při smazání textu */
+    height: 40px;
+}
+/* Blikající kurzor (volitelné) */
+@keyframes blink {
+    0%, 50% {
+        border-color: #e58716;
+    }
+
+    51%, 100% {
+        border-color: transparent;
+    }
+}
+
+#typewriter {
+    animation: blink 0.8s step-end infinite;
+}
+
+
+
+.tournament-status {
+    background: #1e1e1e;
+    border: 1px solid #2c2c2c;
+    border-radius: 5px;
+    padding: 15px;
+    margin: 20px auto; /* Auto margins pro horizontální centrování */
+    font-family: Arial, sans-serif;
+    color: #ffffff;
+    max-width: 800px;
+}
+
+.tournament-status .ts-header {
+    font-size: 1.5rem;
+    color: #e58716;
+    margin-bottom: 10px;
+    text-align: center;
+}
+
+.tournament-status .ts-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 15px;
+}
+
+.tournament-status .ts-card {
+    background: #2c2c2c;
+    padding: 10px;
+    border-radius: 5px;
+    text-align: center;
+    font-size: 0.9rem;
+}
+
+.tournament-status .ts-teams {
+    font-weight: bold;
+    margin-bottom: 5px;
+}
+
+.tournament-status .ts-datetime {
+    margin-bottom: 5px;
+}
+
+.tournament-status .ts-status {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 5px;
+    font-weight: bold;
+}
+
+.tournament-status .led {
+    display: inline-block;
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+}
+
+.tournament-status .online {
+    background-color: #00ff00;
+}
+
+.tournament-status .offline {
+    background-color: #ff0000;
+}
+
+/* Media query pro mobilní zařízení: Zobrazí se karty pod sebou */
+@media (max-width: 768px) {
+    .tournament-status .ts-grid {
+        grid-template-columns: 1fr;
+    }
+}
+
+
+
+
+/* Dashboard styl */
+.dashboard {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 250px;
+    height: 100%;
+    margin-top: 90px;
+    background-color: #1e1e1e;
+    border-right: 1px solid #2c2c2c;
+    transition: transform 0.3s ease;
+    transform: translateX(0);
+    z-index: 999;
+}
+
+.dashboard.collapsed {
+    transform: translateX(-100%);
+}
+
+.dashboard-content {
+    padding: 20px;
+    color: #ffffff;
+}
+/* Vlastní třída pro nadpis Dashboard s menším fontem */
+.dashboard-title {
+    font-size: 1.2rem;
+    color: #e58716;
+    margin-bottom: 20px;
+    text-align: center;
+}
+
+.dashboard-content ul {
+    list-style: none;
+    padding: 0;
+}
+
+.dashboard-content ul li {
+    margin: 10px 0;
+}
+
+.dashboard-content ul li a {
+    color: #ffffff;
+    text-decoration: none;
+    transition: color 0.3s;
+}
+
+.dashboard-content ul li a:hover {
+    color: #e58716;
+}
+
+/* Tlačítko pro collapse/display, umístěné mimo dashboard */
+.toggle-btn {
+    left: 50px;
+    top: 50%;
+    width: 80px;
+    height: 30px;
+    margin-top: 10px;
+    background-color: #FFEB3B; /* výrazně žlutá */
+    border: none;
+    border-radius: 15px;
+    cursor: pointer;
+    outline: none;
+    color: #121212;
+    font-size: 16px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 1001;
+    transition: transform 0.3s ease;
+    padding: 0 50px;
+}
+
+.toggle-btn .arrow {
+    margin-right: 5px;
+    transition: transform 0.3s ease;
+}
+/* Při collapse se šipka otočí, ale tlačítko zůstane viditelné */
+.toggle-btn.collapsed .arrow {
+    transform: rotate(180deg);
+}
+
+/* Media query pro mobilní zařízení */
+@media (max-width: 600px) {
+    .dashboard {
+        width: 200px;
+    }
+
+    .toggle-btn {
+        left: 50px;
+        width: 70px;
+        height: 25px;
+        font-size: 14px;
+    }
 }

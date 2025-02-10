@@ -4,7 +4,310 @@
     ViewData["Title"] = "Home page";
 }
 
-<div class="text-center">
-    <h1 class="display-4">Welcome</h1>
-    <p>Learn about <a href="https://learn.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
+<div class="combined-section py-3" data-aos="fade-up">
+	<!-- Video pozadí -->
+	<!-- playsinline a webkit-playsinline je fix pro automatciké spuštění videa na iOS -->
+	<video autoplay muted loop playsinline webkit-playsinline id="background-video">
+        <!--<source src="/lib/videos/bg_cs.webm" type="video/webm">-->
+        <source src="/lib/videos/cs2_ingame.webm" type="video/webm">
+        Váš prohlížeč nepodporuje video.
+	</video>
+
+	<!-- Obsah nad videem -->
+	<div class="grid-layout">
+        <div class="grid-item text-side">
+            <h2 class="title-landing" data-aos="zoom-in">CS2 LAN party!</h2>
+			<p>Staň se součástí epické bitvy v Counter-Strike 2! Soutěž, vyhrávej a užij si skvělou atmosféru s přáteli.</p>
+			<div class="cta-buttons">
+				<a href="/Login" class="btn btn-primary">Registrace</a>
+				<a href="/About" class="btn btn-secondary">Více informací</a>
+
+			</div>
+			<!-- Element s ID "typewriter"
+			<div id="typewriter"></div> -->
+		</div>
+	</div>
 </div>
+
+
+<section class="page-container12">
+    <!-- Úvodní sekce -->
+    <section class="intro-section12">
+        <h1 data-aos ="fade-up">CS2 LAN Turnaj 2025</h1>
+        <p>Vítejte na oficiální stránce turnaje pořádaného CS2 komunitou</p>
+    </section>
+
+
+    <div id="carouselExampleCaptions" class="carousel slide" data-bs-ride="carousel">
+	    <div class="carousel-indicators">
+		    <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
+		    <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="1" aria-label="Slide 2"></button>
+		    <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="2" aria-label="Slide 3"></button>
+	    </div>
+	    <div class="carousel-inner">
+		    <div class="carousel-item active">
+			    <img src="/lib/images/Article-Header-Web-CS2.png" class="d-block w-100" alt="První snímek">
+			    <div class="carousel-caption d-none d-md-block">
+				    <h5>První snímek</h5>
+				    <p>Popis prvního snímku.</p>
+			    </div>
+		    </div>
+		    <div class="carousel-item">
+			    <img src="/lib/images/dn6at00hkzqb1.png" class="d-block w-100" alt="Druhý snímek">
+			    <div class="carousel-caption d-none d-md-block">
+				    <h5>Druhý snímek</h5>
+				    <p>Popis druhého snímku.</p>
+			    </div>
+		    </div>
+		    <div class="carousel-item">
+			    <img src="/lib/images/uql3e79n3wqb1.png" class="d-block w-100" alt="Třetí snímek">
+			    <div class="carousel-caption d-none d-md-block">
+				    <h5>Třetí snímek</h5>
+				    <p>Popis třetího snímku.</p>
+			    </div>
+		    </div>
+	    </div>
+	    <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide="prev">
+		    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+		    <span class="visually-hidden">Předchozí</span>
+	    </button>
+	    <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide="next">
+		    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+		    <span class="visually-hidden">Další</span>
+	    </button>
+    </div>	
+
+	
+	
+	
+
+    <!-- Element Seznam Turnajů -->
+    <div id="tournamentStatus" class="tournament-status">
+	    <h2 class="ts-header">Status Turnajů</h2>
+	    <div class="ts-grid">
+		    <!-- Tři karty turnajů budou dynamicky vytvořeny pomocí JavaScriptu -->
+	    </div>
+    </div>			
+
+
+    <!-- Informace o akci -->
+    <section class="event-info-section12">
+        <h2>Informace o akci</h2>
+        <div class="event-info12">
+            <div class="event-info-item12">
+                <h3>Kdy</h3>
+                <p><strong>Datum:</strong> 25. července 2025</p>
+                <p><strong>Čas:</strong> 10:00 - 22:00</p>
+            </div>
+            <div class="event-info-item12">
+                <h3>Kde</h3>
+                <p><strong>Místo:</strong> Brněnské výstaviště</p>
+                <p><strong>Adresa:</strong> Dobrovolnická 123, Brno</p>
+                <p><a href="https://www.google.com/maps/place/Brno" target="_blank">Otevřít v mapách</a></p>
+            </div>
+            <div class="event-info-item12">
+                <h3>Kým</h3>
+                <p>Organizováno CS2 komunitou</p>
+                <p>v partnerství s LAN Clubem Brno</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Lokalita a mapa -->
+    <section class="map-section12">
+        <h2>Lokalita</h2>
+        <div class="map-container12">
+            <!-- Google Maps iframe s ukázkovou polohou -->
+            <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2662.2493109619954!2d16.608358315485103!3d49.1950619793658!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x4712934d13e185b1%3A0x29b7628b9f6c0a2f!2sBrno%20Exhibition%20Centre!5e0!3m2!1scs!2scz!4v1617168759990!5m2!1scs!2scz"
+                    allowfullscreen=""
+                    loading="lazy"></iframe>
+        </div>
+    </section>
+
+    <!-- Detailní informace -->
+    <section class="details-section12">
+        <h2>Detailní informace</h2>
+        <div class="event-details12">
+            <p><strong>Program:</strong> Turnaj proběhne formou vyřazovací soutěže se stanoveným rozpisem zápasů. Součástí programu jsou také přednášky a workshopy zaměřené na taktiky a trendy v e-sportu.</p>
+            <p><strong>Cena:</strong> Vstupné činí 150 Kč, zahrnující přístup ke všem soutěžím, občerstvení a další benefity.</p>
+            <p><strong>Počet účastníků:</strong> Očekáváme až 120 hráčů. Registrace je povinná a probíhá online prostřednictvím oficiální stránky.</p>
+        </div>
+    </section>
+
+    <!-- Seznam účastníků -->
+    <section class="participant-section12">
+        <h2>Seznam účastníků</h2>
+        <div class="participant-list12">
+            <ul>
+                <li>Jan Novák</li>
+                <li>Petr Svoboda</li>
+                <li>Lucie Dvořáková</li>
+                <li>Karel Malý</li>
+                <li>Anna Procházková</li>
+                <li>Martin Horák</li>
+                <li>Veronika Černá</li>
+                <li>Tomáš Veselý</li>
+                <li>Jana Králová</li>
+                <li>Marek Němec</li>
+                <!-- Další jména mohou být přidána -->
+            </ul>
+        </div>
+    </section>
+</section>
+
+
+
+
+
+
+<section class="services">
+	<div class="service">
+		<i class="fa-solid fa-server"></i>
+		<h3>Vyhrazený CS2 Server</h3>
+		<p>Běžíme na nízké latenci s 128-tickrate pro maximální výkon a férovou hru.</p>
+	</div>
+	<div class="service">
+		<i class="fa-solid fa-headset"></i>
+		<h3>Voice Chat & Podpora</h3>
+		<p>Komunikuj s týmem přes Discord nebo náš integrovaný voice chat.</p>
+	</div>
+	<div class="service">
+		<i class="fa-solid fa-trophy"></i>
+		<h3>Turnaje & Odměny</h3>
+		<p>Zúčastni se LAN turnajů a vyhraj exkluzivní ceny a skiny.</p>
+	</div>
+</section>
+
+		
+
+		
+<script>
+	(function() {
+		const text = "BANÍK PIČO!!!";
+		const typingSpeed = 150;      // rychlost psaní v ms
+		const deletionSpeed = 100;    // rychlost mazání v ms
+		const pauseDelay = 2000;      // pauza po dokončení psaní před mazáním
+		const element = document.getElementById("typewriter");
+      
+		let index = 0;
+		let isDeleting = false;
+      
+		function typeEffect() {
+			if (!isDeleting) {
+				// Psaní
+				element.textContent = text.substring(0, index + 1);
+				index++;
+				if (index === text.length) {
+					// Po dokončení psaní počkej, poté začni mazat
+					setTimeout(() => {
+						isDeleting = true;
+						typeEffect();
+					}, pauseDelay);
+				} else {
+					setTimeout(typeEffect, typingSpeed);
+				}
+			} else {
+				// Mazání
+				element.textContent = text.substring(0, index - 1);
+				index--;
+				if (index === 0) {
+					// Po dokončení mazání restartuj psaní
+					isDeleting = false;
+					setTimeout(typeEffect, typingSpeed);
+				} else {
+					setTimeout(typeEffect, deletionSpeed);
+				}
+			}
+		}
+      
+		// Spusť efekt
+		typeEffect();
+	})();
+</script>
+
+<script>
+    (function() {
+      // Testovací data pro 3 turnaje
+      const tournaments = [
+        {
+          team1: "Team Alpha",
+          team2: "Team Beta",
+          start: new Date(new Date().getTime() - 30 * 60000), // začal před 30 minutami
+          end: new Date(new Date().getTime() + 30 * 60000)    // skončí za 30 minut
+        },
+        {
+          team1: "Team Gamma",
+          team2: "Team Delta",
+          start: new Date(new Date().getTime() + 60 * 60000), // začne za 60 minut
+          end: new Date(new Date().getTime() + 120 * 60000)   // skončí za 120 minut
+        },
+        {
+          team1: "Team Epsilon",
+          team2: "Team Zeta",
+          start: new Date(new Date().getTime() + 180 * 60000), // začne za 180 minut
+          end: new Date(new Date().getTime() + 240 * 60000)    // skončí za 240 minut
+        }
+      ];
+
+      // Pomocná funkce pro formátování data a času ve formátu "dd.mm.yyyy hh:mm"
+      function formatDateTime(date) {
+        const pad = num => num.toString().padStart(2, '0');
+        return `${pad(date.getDate())}.${pad(date.getMonth() + 1)}.${date.getFullYear()} ${pad(date.getHours())}:${pad(date.getMinutes())}`;
+      }
+
+      function updateTournamentCards() {
+        const now = new Date();
+        const grid = document.querySelector('.tournament-status .ts-grid');
+        grid.innerHTML = ''; // Vymažeme předchozí obsah
+
+        tournaments.forEach(t => {
+          // Vytvoříme kartu pro daný turnaj
+          const card = document.createElement('div');
+          card.className = 'ts-card';
+
+          // Týmové názvy
+          const teamsDiv = document.createElement('div');
+          teamsDiv.className = 'ts-teams';
+          teamsDiv.textContent = `${t.team1} vs ${t.team2}`;
+
+          // Datum a čas
+          const datetimeDiv = document.createElement('div');
+          datetimeDiv.className = 'ts-datetime';
+          datetimeDiv.textContent = `Od ${formatDateTime(t.start)} do ${formatDateTime(t.end)}`;
+
+          // Status s LED indikátorem
+          const statusDiv = document.createElement('div');
+          statusDiv.className = 'ts-status';
+          const led = document.createElement('span');
+          led.className = 'led';
+          let statusText = '';
+          if (now >= t.start && now <= t.end) {
+            led.classList.add('online');
+            statusText = 'Probíhá';
+          } else if (now < t.start) {
+            led.classList.add('offline');
+            statusText = `Začíná v ${formatDateTime(t.start)}`;
+          } else {
+            led.classList.add('offline');
+            statusText = 'Skončil';
+          }
+          statusDiv.appendChild(led);
+          const textSpan = document.createElement('span');
+          textSpan.textContent = statusText;
+          statusDiv.appendChild(textSpan);
+
+          // Sestavíme kartu
+          card.appendChild(teamsDiv);
+          card.appendChild(datetimeDiv);
+          card.appendChild(statusDiv);
+
+          // Přidáme kartu do gridu
+          grid.appendChild(card);
+        });
+      }
+
+      updateTournamentCards();
+      // Aktualizace každou minutu
+      setInterval(updateTournamentCards, 60000);
+    })();
+</script>

@@ -1,0 +1,84 @@
+﻿@page
+@model WebApplication1.Pages.RegisterModel
+@{
+}
+
+<!-- REGISTRAČNÍ FORMULÁŘ -->
+<div class="page-wrapper12">
+	<section class="register-container12">
+		<h2>Registrace</h2>
+		<form id="registerForm" action="#" method="post">
+			<label for="email">E-mail</label>
+			<input type="email" id="email" name="email" placeholder="Zadejte e-mail" required>
+
+			<label for="password">Heslo</label>
+			<input type="password" id="password" name="password" placeholder="Zadejte heslo" required>
+
+			<label for="confirm_password">Potvrzení hesla</label>
+			<input type="password" id="confirm_password" name="confirm_password" placeholder="Zadejte heslo znovu" required>
+
+			<div class="options12">
+				<div>
+					<input type="checkbox" id="terms" name="terms" required>
+					<label for="terms" style="display:inline;">Souhlasím s obchodními podmínkami</label>
+				</div>
+			</div>
+
+			<button type="submit">Registrovat se</button>
+		</form>
+		<div class="register12">
+			<p>Již máte účet? <a href="#">Přihlaste se</a></p>
+		</div>
+		<div id="registerStatus"></div>
+	</section>
+</div>
+
+<!-- Firebase Authentication pro verzi 11 -->
+<script type="module">
+  // Import potřebných funkcí z Firebase SDK verze 11
+  import { initializeApp } from 'https://www.gstatic.com/firebasejs/11.0.0/firebase-app.js';
+  import { getAuth, createUserWithEmailAndPassword } from 'https://www.gstatic.com/firebasejs/11.0.0/firebase-auth.js';
+
+// Nahraďte tyto hodnoty svými údaji z Firebase Console
+const firebaseConfig = {
+	  apiKey: "AIzaSyCxtoLSt8Pok3qXjuM1Kf9c2aQ_j8eW34k",
+	  authDomain: "cs2-lan-party.firebaseapp.com",
+	  projectId: "cs2-lan-party",
+	  storageBucket: "cs2-lan-party.appspot.com",
+	  messagingSenderId: "891209117834",
+	  appId: "1:891209117834:web:57f4289079b87e479fbd73"
+	};
+
+  // Inicializace Firebase a získání instance Auth
+  const app = initializeApp(firebaseConfig);
+  const auth = getAuth(app);
+
+  // Zpracování odeslání registračního formuláře
+  const registerForm = document.getElementById('registerForm');
+  const registerStatus = document.getElementById('registerStatus');
+
+  registerForm.addEventListener('submit', (e) => {
+    e.preventDefault(); // Zabráníme výchozímu odeslání formuláře
+
+    const email = document.getElementById('email').value;
+    const password = document.getElementById('password').value;
+    const confirmPassword = document.getElementById('confirm_password').value;
+
+    // Kontrola shody hesel
+    if (password !== confirmPassword) {
+      registerStatus.textContent = "Hesla se neshodují!";
+      return;
+    }
+
+    // Vytvoření uživatele pomocí Firebase Authentication
+    createUserWithEmailAndPassword(auth, email, password)
+      .then((userCredential) => {
+        // Registrace proběhla úspěšně
+        registerStatus.textContent = "Registrace proběhla úspěšně!";
+        // Můžete přidat přesměrování nebo další logiku
+      })
+      .catch((error) => {
+        registerStatus.textContent = "Chyba: " + error.message;
+      });
+  });
+</script>

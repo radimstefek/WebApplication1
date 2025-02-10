@@ -1,0 +1,105 @@
+﻿@page
+@model WebApplication1.Pages.AlertSettingsModel
+@{
+}
+<!DOCTYPE html>
+<html lang="cs">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Alert Settings - CS2 LAN Turnaj</title>
+    <style>
+        /* Základní styly pro celou stránku */
+        body {
+            background-color: #121212;
+            color: #ffffff;
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+        }
+        /* Top bar nad navigací */
+        .top-bar {
+            background-color: #1e1e1e;
+            padding: 10px;
+            text-align: center;
+            color: #e58716;
+        }
+        /* Kontejner formuláře */
+        .form-container {
+            max-width: 500px;
+            margin: 40px auto;
+            background-color: #1e1e1e;
+            padding: 20px;
+            border-radius: 5px;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.3);
+        }
+
+            .form-container h2 {
+                color: #e58716;
+                text-align: center;
+                margin-bottom: 20px;
+            }
+
+            .form-container label {
+                display: block;
+                margin-bottom: 5px;
+                font-weight: bold;
+            }
+
+            .form-container input[type="password"],
+            .form-container select,
+            .form-container textarea {
+                width: 100%;
+                padding: 10px;
+                margin-bottom: 15px;
+                border: none;
+                border-radius: 3px;
+                background-color: #2c2c2c;
+                color: #ffffff;
+            }
+
+            .form-container button {
+                width: 100%;
+                padding: 12px;
+                background-color: #e58716;
+                color: #121212;
+                border: none;
+                border-radius: 3px;
+                font-size: 1.1rem;
+                cursor: pointer;
+                font-weight: bold;
+                transition: background-color 0.3s;
+            }
+
+                .form-container button:hover {
+                    background-color: #cf7a13;
+                }
+    </style>
+</head>
+<body>
+    <!-- Top Bar s oznámením -->
+    <div class="top-bar">
+        <span id="alertText">[Zde se zobrazí oznámení]</span>
+    </div>
+
+    <!-- Formulář pro nastavení alertu -->
+    <div class="form-container">
+        <h2>Alert Settings</h2>
+        <form method="post">
+            <label for="password">Zadejte heslo:</label>
+            <input type="password" id="password" name="password" required />
+
+            <label for="alertToggle">Zobrazit alert?</label>
+            <select id="alertToggle" name="alertToggle">
+                <option value="true">Ano</option>
+                <option value="false">Ne</option>
+            </select>
+
+            <label for="alertMessage">Text alertu:</label>
+            <textarea id="alertMessage" name="alertMessage" rows="4" required></textarea>
+
+            <button type="submit">Uložit nastavení</button>
+        </form>
+    </div>
+</body>
+</html>

@@ -1,0 +1,35 @@
+﻿@page
+@model WebApplication1.Pages.KontaktModel
+@{
+}
+
+
+
+<div class="page-wrapper12">
+	<div class="contact-container12">
+		<h1>Kontakt</h1>
+		<div class="contact-info12">
+			<p><strong>Adresa:</strong> Ulice 123, 100 00 Praha</p>
+			<p><strong>Telefon:</strong> +420 123 456 789</p>
+			<p><strong>E-mail:</strong> info@cs2lantage.com</p>
+			<p>Máte-li jakékoliv dotazy nebo potřebujete další informace, neváhejte nás kontaktovat prostřednictvím níže uvedeného formuláře.</p>
+		</div>
+		<div class="contact-form12">
+			<form action="#" method="post">
+				<label for="name">Jméno</label>
+				<input type="text" id="name" name="name" placeholder="Vaše jméno" required>
+        
+				<label for="email">E-mail</label>
+				<input type="email" id="email" name="email" placeholder="Váš e-mail" required>
+        
+				<label for="subject">Předmět</label>
+				<input type="text" id="subject" name="subject" placeholder="Předmět zprávy" required>
+        
+				<label for="message">Zpráva</label>
+				<textarea id="message" name="message" placeholder="Vaše zpráva" required></textarea>
+        
+				<button type="submit">Odeslat</button>
+			</form>
+		</div>
+	</div>
+</div>

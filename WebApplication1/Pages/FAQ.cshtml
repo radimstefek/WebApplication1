@@ -1,0 +1,148 @@
+﻿@page
+@model WebApplication1.Pages.FAQModel
+@{
+}
+
+<!DOCTYPE html>
+<html lang="cs">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Průběh LAN Party - CS2 LAN Turnaj</title>
+<script>
+    // FAQ akordeon: Po kliknutí na otázku se zobrazí/skryje odpověď
+    document.addEventListener('DOMContentLoaded', function() {
+      var faqItems = document.querySelectorAll('.faq-item12 h3');
+      faqItems.forEach(function(item) {
+        item.addEventListener('click', function() {
+          var answer = this.nextElementSibling;
+          if(answer.style.display === "block") {
+            answer.style.display = "none";
+          } else {
+            answer.style.display = "block";
+          }
+        });
+      });
+    });
+  </script>
+</head>
+
+<body>
+<div class="page-wrapper12">
+	<div class="content-container12">
+		<h1>Průběh LAN Party</h1>
+		<p>
+			Níže naleznete podrobný popis průběhu naší CS2 LAN party včetně časového harmonogramu jednotlivých etap. Pro lepší orientaci jsme harmonogram rozdělili do přehledných bloků. Na konci stránky pak najdete sekci FAQ s odpověďmi na nejčastější dotazy.
+		</p>
+
+		<!-- Časový harmonogram -->
+		<section class="timeline-section12">
+			<h2>Časový harmonogram</h2>
+			<div class="timeline12">
+				<div class="timeline-item12">
+					<div class="timeline-time12">09:00</div>
+					<div class="timeline-content12">
+						<h3>Registrace a Check-In</h3>
+						<p>Účastníci se registrují, obdrží registrační balíčky a jejich vybavení je zkontrolováno.</p>
+					</div>
+				</div>
+				<div class="timeline-item12">
+					<div class="timeline-time12">09:30</div>
+					<div class="timeline-content12">
+						<h3>Úvodní ceremoniál</h3>
+						<p>Oficiální zahájení akce, představení pravidel a týmu organizátorů.</p>
+					</div>
+				</div>
+				<div class="timeline-item12">
+					<div class="timeline-time12">10:00 - 12:00</div>
+					<div class="timeline-content12">
+						<h3>Skupinová fáze turnaje</h3>
+						<p>Hráči se utkávají v předkolech, zápasy jsou rozehrávány v několika kolech a probíhá eliminace.</p>
+					</div>
+				</div>
+				<div class="timeline-item12">
+					<div class="timeline-time12">12:00 - 13:00</div>
+					<div class="timeline-content12">
+						<h3>Obědová přestávka</h3>
+						<p>Čas na občerstvení, relaxaci a krátký odpočinek. Catering je zajištěn naším týmem.</p>
+					</div>
+				</div>
+				<div class="timeline-item12">
+					<div class="timeline-time12">13:00 - 15:00</div>
+					<div class="timeline-content12">
+						<h3>Čtvrtfinále a semifinále</h3>
+						<p>Nejlepší týmy postoupí do čtvrtfinále a následně se utkají v semifinále o místo ve finále.</p>
+					</div>
+				</div>
+				<div class="timeline-item12">
+					<div class="timeline-time12">15:00 - 16:00</div>
+					<div class="timeline-content12">
+						<h3>Přestávka a technická kontrola</h3>
+						<p>Krátká pauza na občerstvení a zajištění technické podpory pro další zápasy.</p>
+					</div>
+				</div>
+				<div class="timeline-item12">
+					<div class="timeline-time12">16:00 - 17:00</div>
+					<div class="timeline-content12">
+						<h3>Finálové zápasy</h3>
+						<p>Nejlepší týmy se utkají v napínavých finálových zápasech o titul vítězů.</p>
+					</div>
+				</div>
+				<div class="timeline-item12">
+					<div class="timeline-time12">17:00 - 17:30</div>
+					<div class="timeline-content12">
+						<h3>Vyhlášení vítězů a slavnostní ceremoniál</h3>
+						<p>Oficiální vyhlášení vítězů, předání cen a poděkování účastníkům a partnerům.</p>
+					</div>
+				</div>
+			</div>
+		</section>
+
+		<!-- FAQ sekce -->
+		<section class="faq-section12">
+			<h2>FAQ - Často kladené dotazy</h2>
+			<div class="faq-item12">
+					<h3>Jak se mohu registrovat na akci? ▼</h3>
+				<p>Registrace probíhá online prostřednictvím naší oficiální stránky. Po úspěšné registraci obdržíte potvrzovací e-mail s dalšími instrukcemi.</p>
+			</div>
+			<div class="faq-item12">
+				<h3>Je nutné si přinést vlastní vybavení?</h3>
+				<p>Doporučujeme si přinést vlastní myš, klávesnici a headset. Základní vybavení je však k dispozici pro případ nouze.</p>
+			</div>
+			<div class="faq-item12">
+				<h3>Jaký je časový harmonogram akce?</h3>
+				<p>Časový harmonogram je uveden výše. Akce začíná registrací, pokračuje turnajem s přestávkami a končí slavnostním ceremoniálem.</p>
+			</div>
+			<div class="faq-item12">
+				<h3>Budou k dispozici občerstvení a catering?</h3>
+				<p>Ano, během celé akce je zajištěn catering s teplými i studenými nápoji a občerstvením.</p>
+			</div>
+			<div class="faq-item12">
+				<h3>Jaká je maximální kapacita účastníků?</h3>
+				<p>Na akci je maximálně 120 hráčů, registrace probíhá do vyprodání kapacity.</p>
+			</div>
+			<div class="faq-item12">
+				<h3>Jaké hry budou hrát účastníci?</h3>
+				<p>Hlavní hrou je CounterStrike 2, přičemž v rámci akce mohou probíhat i další soutěže a minihry.</p>
+			</div>
+			<div class="faq-item12">
+				<h3>Co dělat v případě technických problémů?</h3>
+				<p>Na místě je k dispozici technická podpora, která pomůže s problémy s připojením nebo hardwarem.</p>
+			</div>
+			<div class="faq-item12">
+				<h3>Jsou na akci dodržována bezpečnostní opatření?</h3>
+				<p>Ano, akce probíhá v souladu se všemi platnými bezpečnostními a hygienickými normami.</p>
+			</div>
+			<div class="faq-item12">
+				<h3>Jak probíhá vyhlášení vítězů?</h3>
+				<p>Vyhlášení vítězů se koná na závěr akce během slavnostního ceremoniálu, kdy jsou předány ceny nejlepším týmům.</p>
+			</div>
+			<div class="faq-item12">
+				<h3>Kam se obrátit v případě dalších dotazů?</h3>
+				<p>Pro další dotazy nás můžete kontaktovat prostřednictvím kontaktní stránky nebo e-mailu: info@cs2lantage.com.</p>
+			</div>
+		</section>
+	</div>
+</div>
+</body>
+</html>
